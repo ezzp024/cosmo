@@ -489,6 +489,7 @@ function renderStaff(){
     const [c1,c2] = ROLE_COLORS[s.role] || ["#8838d4","#4285F4"];
     const av = s.avatar ? `<img src="${s.avatar}"/>` : `<div class="placeholder">${initials(s.name)}</div>`;
     const verifyIcon = s.verify ? `<span class="verify"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg></span>` : "";
+    const slug = s.handle.replace('@','').toLowerCase();
     return `<div class="staff" style="--role-c1:${c1};--role-c2:${c2};">
       <div class="staff-top">
         <div class="staff-av">${av}<div class="staff-status ${s.status}"></div></div>
@@ -501,7 +502,7 @@ function renderStaff(){
       <div class="staff-bio">${s.bio}</div>
       <div class="staff-tags">${s.tags.map(t=>`<span class="staff-tag">${t}</span>`).join('')}</div>
       <div class="staff-actions">
-        <a class="btn btn-primary" href="${s.discord}"><svg viewBox="0 0 24 24"><path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4l-.19.39c1.5.36 2.96.96 4.31 1.78A14 14 0 0 0 5.88 6.17C7.23 5.36 8.69 4.75 10.19 4.39L10 4c-1.5.26-2.93.71-4.27 1.33C2.69 9.34 1.83 13.32 2.27 17.27c1.79 1.32 3.83 2.13 5.97 2.49.4-.55.76-1.13 1.06-1.74-.59-.22-1.16-.5-1.7-.83l.41-.32c3.42 1.6 7.13 1.6 10.5 0l.41.32c-.54.33-1.11.61-1.7.83.3.61.66 1.19 1.06 1.74 2.14-.36 4.18-1.17 5.97-2.49.5-4.49-1-8.55-3.78-11.94z"/></svg>Discord</a>
+        <a class="btn btn-primary" href="s.html?u=${slug}"><svg viewBox="0 0 24 24"><path d="M9 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zm6 0c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37C11.07 8.33 14.05 10 17.42 10c.78 0 1.53-.09 2.25-.26.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"/></svg>Profile</a>
         <a class="btn btn-ghost btn-icon" href="${s.ticket}" title="Open Ticket"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></a>
       </div>
     </div>`;
